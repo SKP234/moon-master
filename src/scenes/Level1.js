@@ -9,6 +9,7 @@ class Menu extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
         this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
+
     
         
     }

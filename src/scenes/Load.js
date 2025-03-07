@@ -34,6 +34,7 @@ class Load extends Phaser.Scene {
         this.load.image('tilesetImage', './assets/terrain.png')
         this.load.tilemapTiledJSON('tilemapMenu', './assets/menutileset.json')
         
+        this.load.image('car', './assets/car.png')
     }
 
     create(){
