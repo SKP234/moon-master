@@ -25,7 +25,7 @@ class Menu extends Phaser.Scene {
         this.add.image(game.config.width / 2, 40, 'title')
         this.add.image(336, 225, 'playtext')
         this.add.image(118, 225, 'creditstext')
-        this.add.text(game.config.width / 2, 130, 'Arrow keys to move\nF to attack\nDestroy junk on the moon', {
+        this.add.text(game.config.width / 2, 130, 'Arrow keys to move\nF to attack\nF for rocket direction change\nDestroy junk on the moon', {
             color: '#3a34eb',
             align: 'center',
         }).setOrigin(0.5)

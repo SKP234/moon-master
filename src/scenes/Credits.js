@@ -23,7 +23,7 @@ class Credits extends Phaser.Scene {
         
         this.add.image(220, 220, 'returntext')
 
-        this.add.text(game.config.width / 2, 130, 'fontspace.com/megatrans-font-f101762\nfor menu font\n\nRecreated all other assets\n\nBased off of Moon Master from\nAqua Teen Hunger Force(Season 3, Episode 8)', {
+        this.add.text(game.config.width / 2, 130, 'fontspace.com/megatrans-font-f101762\nfor menu font\n\nRecreated all other assets\n\nAttempted recreation of Moon Master from\nAqua Teen Hunger Force(Season 3, Episode 8)', {
             color: '#3a34eb',
             align: 'center',
             fontSize: '14px',

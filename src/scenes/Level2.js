@@ -21,6 +21,17 @@ class Level2 extends Phaser.Scene {
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
 
+        //score
+        this.add.rectangle(10, 15, 130, 25,'#000000').setOrigin(0)
+        this.add.text(10, 25, 'SCORE', {
+            color: '#c6d248',
+            fontSize: '16px'
+        }).setOrigin(0)
+        this.score = this.add.text(70, 24, '5280', {
+            color: '#4cc42f',
+            fontSize: '18px',
+            align: 'right',
+        }).setOrigin(0)
 
         //player audio
         this.stepsound = this.sound.add('playerstep')
@@ -76,6 +87,7 @@ class Level2 extends Phaser.Scene {
                 this.time.addEvent({
                     callback: () => {
                         this.win = true
+                        this.score.text = '7734'
                         this.time.addEvent({
                             delay: 2000, 
                             callback: () => {

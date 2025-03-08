@@ -27,6 +27,43 @@ class Level3 extends Phaser.Scene {
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
 
+        
+        //score
+        this.add.rectangle(10, 15, 130, 25,'#000000').setOrigin(0)
+        this.add.text(10, 25, 'SCORE', {
+            color: '#c6d248',
+            fontSize: '16px'
+        }).setOrigin(0)
+        this.score = this.add.text(70, 24, '7734', {
+            color: '#4cc42f',
+            fontSize: '18px',
+            align: 'right',
+        }).setOrigin(0)
+
+
+        //player audio
+        this.stepsound = this.sound.add('playerstep')
+        this.stepsound.setVolume(0.2)
+        this.time.addEvent({
+            delay: 55, 
+            callback: () => {
+                if(this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown){
+                    this.stepsound.play({ loop: false })
+                }
+            },
+            loop: true ,
+        });
+        this.attacksound = this.sound.add('attack')
+        this.stepsound.setVolume(0.2)
+        this.time.addEvent({
+            delay: 144, 
+            callback: () => {
+                if(this.keyF.isDown){
+                    this.attacksound.play({ loop: false })
+                }
+            },
+            loop: true ,
+        });
         this.time.addEvent({
             callback: () => {
                     this.sound.play('level3', { loop: false })
@@ -58,6 +95,7 @@ class Level3 extends Phaser.Scene {
                 callback: () => {
                     this.rocket.setVisible(false)
                     this.win = true
+                    this.score.text = '123456'
                     this.time.addEvent({
                         delay: 4000,
                         callback: () => {
