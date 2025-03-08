@@ -1,3 +1,7 @@
+// Name: Kyle Nguyen
+// Based off of Moon Master from Aqua Teen Hunger Force(Season 3, Episode 8; 2:36)
+// Major Components: Physics, Tileset, Animation, Timers, Audio, Input(keyboard)
+
 
 let config = {
     type: Phaser.AUTO,

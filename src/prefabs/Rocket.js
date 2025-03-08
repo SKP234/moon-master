@@ -1,6 +1,7 @@
 class Rocket extends Phaser.GameObjects.Rectangle {
     constructor(scene, x, y, width, height, color) {
         super(scene, x, y, width, height, color)
+        this.currentScene = scene
       scene.add.existing(this)
       scene.physics.add.existing(this)
       this.setVisible(false)
@@ -17,6 +18,7 @@ class Rocket extends Phaser.GameObjects.Rectangle {
         this.y = playerY - 25
     }
     if(keyFjustdown && this.isFiring == false){
+        this.currentScene.sound.play('shoot')
         this.setVisible(true)
         this.isFiring = true
         this.body.setVelocity(0, -200)

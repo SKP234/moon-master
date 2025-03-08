@@ -21,7 +21,14 @@ class Menu extends Phaser.Scene {
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
 
+        // menu text
         this.add.image(game.config.width / 2, 40, 'title')
+        this.add.image(336, 225, 'playtext')
+        this.add.image(118, 225, 'creditstext')
+        this.add.text(game.config.width / 2, 130, 'Arrow keys to move\nF to attack\nDestroy junk on the moon', {
+            color: '#3a34eb',
+            align: 'center',
+        }).setOrigin(0.5)
 
 
         //player audio
@@ -31,7 +38,7 @@ class Menu extends Phaser.Scene {
             delay: 55, 
             callback: () => {
                 if(this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown){
-                    this.stepsound.play({ loop: false })
+                    this.stepsound.play({loop: false})
                 }
             },
             loop: true ,
@@ -42,11 +49,14 @@ class Menu extends Phaser.Scene {
             delay: 144, 
             callback: () => {
                 if(this.keyF.isDown){
-                    this.attacksound.play({ loop: false })
+                    this.attacksound.play({loop: false})
                 }
             },
             loop: true ,
         });
+
+        this.level1sound = this.sound.add('level1')
+        this.creditssound = this.sound.add('credits')
 
     }
 
@@ -56,11 +66,10 @@ class Menu extends Phaser.Scene {
     update() {
         this.player.update(this.cursors, this.keyF.isDown)
 
-        
+        //scene change
         this.physics.add.overlap(this.player, this.car, () =>{
             if(this.keyF.isDown){
                 this.time.addEvent({
-                    delay: 1000, 
                     callback: () => {
                         this.scene.start('Level1Scene')
                     },
@@ -72,7 +81,6 @@ class Menu extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.car2, () =>{
             if(this.keyF.isDown){
                 this.time.addEvent({
-                    delay: 1000, 
                     callback: () => {
                         this.scene.start('creditsScene')
                     },

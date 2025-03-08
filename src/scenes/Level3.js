@@ -9,6 +9,7 @@ class Level3 extends Phaser.Scene {
     }
 
     create() {
+        this.sound.stopAll();
         this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
         this.cursors = this.input.keyboard.createCursorKeys()
         this.player = new Player(this, game.config.width / 2, 275 , 'knight')
@@ -26,6 +27,21 @@ class Level3 extends Phaser.Scene {
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
 
+        this.time.addEvent({
+            callback: () => {
+                    this.sound.play('level3', { loop: false })
+            },
+        });
+        this.time.addEvent({
+            delay: 100, 
+            callback: () => {
+                if(this.win && !this.played){
+                    this.played = true
+                    this.sound.play('ending', { loop: false })
+                }
+            },
+            loop: true ,
+        });
 
     }
 
@@ -42,6 +58,12 @@ class Level3 extends Phaser.Scene {
                 callback: () => {
                     this.rocket.setVisible(false)
                     this.win = true
+                    this.time.addEvent({
+                        delay: 4000,
+                        callback: () => {
+                            this.scene.start('menuScene')
+                        },
+                    });
                 },
             });
         })

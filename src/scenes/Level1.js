@@ -1,11 +1,15 @@
 class Level1 extends Phaser.Scene {
     constructor() {
         super("Level1Scene")
+        this.win = false
+        this.played = false
     }
     preload(){
     }
 
     create() {
+        
+        this.sound.stopAll();
         this.car = new Car(this, game.config.width / 2, 60 , 'car')
         this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
         this.cursors = this.input.keyboard.createCursorKeys()
@@ -42,6 +46,24 @@ class Level1 extends Phaser.Scene {
             },
             loop: true ,
         });
+
+
+        this.time.addEvent({
+            callback: () => {
+                    this.sound.play('level1', { loop: false })
+            },
+        });
+        this.time.addEvent({
+            delay: 100, 
+            callback: () => {
+                if(this.win && !this.played){
+                    this.played = true
+                    this.sound.play('congrats', { loop: false })
+                }
+            },
+            loop: true ,
+        });
+
     }
 
 
@@ -54,9 +76,14 @@ class Level1 extends Phaser.Scene {
         this.physics.add.overlap(this.player, this.car, () =>{
             if(this.keyF.isDown){
                 this.time.addEvent({
-                    delay: 1000, 
                     callback: () => {
-                        this.scene.start('Level2Scene')
+                        this.win = true
+                        this.time.addEvent({
+                            delay: 2000, 
+                            callback: () => {
+                                this.scene.start('Level2Scene')
+                            },
+                        });
                     },
                 });
 

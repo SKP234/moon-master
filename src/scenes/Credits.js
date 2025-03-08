@@ -20,6 +20,14 @@ class Credits extends Phaser.Scene {
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
 
+        
+        this.add.image(220, 220, 'returntext')
+
+        this.add.text(game.config.width / 2, 130, 'fontspace.com/megatrans-font-f101762\nfor menu font\n\nRecreated all other assets\n\nBased off of Moon Master from\nAqua Teen Hunger Force(Season 3, Episode 8)', {
+            color: '#3a34eb',
+            align: 'center',
+            fontSize: '14px',
+        }).setOrigin(0.5)
 
         this.stepsound = this.sound.add('playerstep')
         this.stepsound.setVolume(0.2)
@@ -44,6 +52,8 @@ class Credits extends Phaser.Scene {
             loop: true ,
         });
 
+        
+
     }
 
 
@@ -52,10 +62,10 @@ class Credits extends Phaser.Scene {
     update() {
         this.player.update(this.cursors, this.keyF.isDown)
 
+        //scene change
         this.physics.add.overlap(this.player, this.carCredits, () =>{
             if(this.keyF.isDown){
                 this.time.addEvent({
-                    delay: 1000, 
                     callback: () => {
                         this.scene.start('menuScene')
                     },

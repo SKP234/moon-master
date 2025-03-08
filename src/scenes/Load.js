@@ -50,11 +50,26 @@ class Load extends Phaser.Scene {
         
         this.load.image('car', './assets/car.png')
         this.load.image('title', './assets/title.png')
+        this.load.image('playtext', './assets/playtext.png')
+        this.load.image('creditstext', './assets/creditstext.png')
+        this.load.image('returntext', './assets/returntext.png')
+
 
         this.load.audio('playerstep', './assets/playerstep.wav')
         this.load.audio('attack', './assets/attack.wav')
         this.load.audio('shoot', './assets/shoot.wav')
         this.load.audio('gorgatronstep', './assets/gorgatronstep.wav')
+
+        //brian narrator
+        this.load.audio('congrats', './assets/congrats.wav')
+        this.load.audio('credits', './assets/credits.wav')
+        this.load.audio('menu', './assets/menu.wav')
+        this.load.audio('level1', './assets/level1.wav')
+        this.load.audio('level2', './assets/level2.wav')
+        this.load.audio('level3', './assets/level3.wav')
+        this.load.audio('beware', './assets/beware.wav')
+        this.load.audio('shootgorgatron', './assets/shootgorgatron.wav')
+        this.load.audio('ending', './assets/ending.wav')
     }
 
     create(){

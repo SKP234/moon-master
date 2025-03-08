@@ -7,6 +7,7 @@ class Level3intro extends Phaser.Scene {
 
     create() {
         
+        this.sound.stopAll();
         const lv3introMap = this.add.tilemap('tilemapLevel3intro')
         const lv3introtileset = lv3introMap.addTilesetImage('terrain', 'tilesetImage')
         const terrainLayer = lv3introMap.createLayer('Terrain', lv3introtileset, 0, 0)
@@ -30,6 +31,11 @@ class Level3intro extends Phaser.Scene {
             },
         });
 
+        this.time.addEvent({
+            callback: () => {
+                    this.sound.play('beware', { loop: false })
+            },
+        });
     }
 
 
