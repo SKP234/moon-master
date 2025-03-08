@@ -33,6 +33,11 @@ class Load extends Phaser.Scene {
 
         this.load.image('tilesetImage', './assets/terrain.png')
         this.load.tilemapTiledJSON('tilemapMenu', './assets/menutileset.json')
+
+        this.load.spritesheet('knight', './assets/knightspritesheet.png', {
+            frameWidth: 13,
+            frameHeight: 10,
+        })
         
         this.load.image('car', './assets/car.png')
     }
