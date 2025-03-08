@@ -1,5 +1,5 @@
 class Player extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, cursors, frame) {
+    constructor(scene, x, y, texture, frame) {
       super(scene, x, y, texture, frame)
   
       scene.add.existing(this)
@@ -38,13 +38,6 @@ class Player extends Phaser.GameObjects.Sprite {
     }
 
   
-  preload(){
-  }
-
-  create(){
-
-  }
-
   update(cursors, keyFdown) {
     if(cursors.left.isDown){
       this.body.setVelocityX(-this.Speed)

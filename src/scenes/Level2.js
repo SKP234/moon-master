@@ -1,27 +1,22 @@
-class Menu extends Phaser.Scene {
+class Level2 extends Phaser.Scene {
     constructor() {
-        super("menuScene")
+        super("Level2Scene")
     }
     preload(){
     }
 
     create() {
-        this.car = new Car(this, 300, 240 , 'car')
-        this.car2 = new Car(this, 100, 240 , 'car')
+        this.car = new Car(this, 80, 115 , 'car')
         this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
         this.cursors = this.input.keyboard.createCursorKeys()
-        this.player = new Player(this, game.config.width / 2, 240 , 'knight')
-
-
+        this.player = new Player(this, 305, 200, 'knight')
     
-        const menuMap = this.add.tilemap('tilemapMenu')
-        const menutileset = menuMap.addTilesetImage('terrain', 'tilesetImage')
-        const terrainLayer = menuMap.createLayer('Terrain', menutileset, 0, 0)
+        const lv2Map = this.add.tilemap('tilemapLevel2')
+        const lv2tileset = lv2Map.addTilesetImage('terrain', 'tilesetImage')
+        const terrainLayer = lv2Map.createLayer('Terrain', lv2tileset, 0, 0)
 
         terrainLayer.setCollisionByProperty({ collide: true })
         this.physics.add.collider(this.player, terrainLayer)
-
-        this.add.image(game.config.width / 2, 40, 'title')
 
 
         //player audio
@@ -47,7 +42,6 @@ class Menu extends Phaser.Scene {
             },
             loop: true ,
         });
-
     }
 
 
@@ -62,27 +56,12 @@ class Menu extends Phaser.Scene {
                 this.time.addEvent({
                     delay: 1000, 
                     callback: () => {
-                        this.scene.start('Level1Scene')
+                        this.scene.start('Level3introScene')
                     },
                 });
-
             }
-            
-        })
-        this.physics.add.overlap(this.player, this.car2, () =>{
-            if(this.keyF.isDown){
-                this.time.addEvent({
-                    delay: 1000, 
-                    callback: () => {
-                        this.scene.start('creditsScene')
-                    },
-                });
-
-            }
-            
         })
       }
-      
 
 
 

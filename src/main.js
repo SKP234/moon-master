@@ -3,7 +3,7 @@ let config = {
     type: Phaser.AUTO,
     width: 400,
     height: 320,
-    scene: [ Load, Menu, Credits , Level1],
+    scene: [ Load, Menu, Credits , Level1, Level2, Level3, Level3intro],
     scale: {
         autoCenter: Phaser.Scale.autoCenter
     },
